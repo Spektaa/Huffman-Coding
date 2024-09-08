@@ -1,36 +1,55 @@
-Background
-Data compression has revolutionized the digital multimedia. For this purpose, Compression algorithms are normally used which reduce the size of a file while ensuring that files can be fully restored to their original state if needed. There is a wide range of algorithms that can used to perform lossless data compression. One of the simplest data compression technique is known as the Run-Length Encoding (RLE) algorithm but the biggest problem with this is that there are no repeated characters, and the size of output data can be two times more than the size of input data. To eliminate this problem Huffman Coding was used. Huffman coding algorithm was introduced by David Huffman. It is a more successful method used for data compression.
+# Huffman Coding - Data Compression Project
 
-Purpose
-Every information in computing is encoded as strings of 1’s and 0’s. The main purpose of information theory is to convey information in as few bits as possible, bearing in mind that every encoding is unambiguous. Huffman's coding has the same aim and is largely successful. Initially, this algorithm creates a tree in the form of a leaf node and its children which has a probability of the frequent appearance of the characters. It assigns less bits to the more frequently occurring characters which decreases the overall length of the data. So, Huffman coding algorithm has more efficiency in file compression with greater compression ratio.
+## Background
 
-Objectives
-To Compress data without losing data
-Use of Statistical Coding - More frequently used symbols should have shorter code words
-Transmit information in fewest bits possible
-Encoding that should be used must be variable-length that is use of variable number of bits for encoding
-Scope
-In the modern era, the transmission of data via the Internet depends on time. More data takes more time to transmit. Huffman coding reduces the data size thus data transmission time is significantly reduced due to the Huffman coding algorithm. It is the basis of many data compression and encoding schemes and also helps in lossless data encoding. It has different real-world applications and some of them are given below:
+Data compression has revolutionized digital multimedia. Compression algorithms reduce the size of a file while ensuring that files can be fully restored to their original state if needed. A wide range of algorithms can be used for lossless data compression, one of the simplest being Run-Length Encoding (RLE). However, RLE's major drawback is that if there are no repeated characters, the output size can be double that of the input. To address this issue, **Huffman Coding** was introduced by David Huffman.
 
-Data compression tools such as GZIP, PKZIP (WinZip) uses Huffman encoding.
-Image format like JPEG, PNG also uses Huffman encoding.
-DEFLATE (a lossless data compression algorithm) also uses a combination of Huffman algorithm.
-Huffman based code compression techniques also used for embedded processors.
-It is also used in advanced audio coding standard.
-This algorithm is used for compressing data and reducing its size without losing any information. This algorithm consists of two major steps:
+Huffman coding is a more successful method for data compression. It creates shorter binary codes for more frequently occurring characters, making it highly efficient in reducing file sizes.
 
-Building a Huffman tree from the input characters
-Traversing the Huffman tree to assign codes to the characters (encoding)
+## Purpose
 
-Analysis
-For decompression(decoding of data), the Huffman tree must be somehow reconstructed. One way is to store the encoding map (containing the characters and their frequency count) along with the encoded data but the overhead in such a case could amount to several kilobytes, so this method has little practical use. For this project, we studied and used the approach where the information to reconstruct the tree is sent as a preorder traversal. The non-leaf node is indicated as 0 and leaf node as 1 and the character on the leaf is also stored with it. It takes comparatively a smaller number of bytes and hence it is one of the efficient ways to store the information of Huffman tree.
+Every piece of information in computing is encoded as strings of 1’s and 0’s. The main purpose of information theory is to convey information in as few bits as possible, ensuring every encoding is unambiguous. **Huffman coding** achieves this by assigning fewer bits to frequently occurring characters, thus reducing the overall length of the data and improving compression efficiency.
 
-Time Complexity
-The time complexity analysis of Huffman Coding is as follows:
+## Objectives
 
-It extracts minimum frequency from the priority queue by using extractMin() which is called 2 x (n-1) times if there are n nodes.
-As extractMin() calls minHeapify() whose complexity is O(logn).
-Thus, Overall time complexity of Huffman Coding becomes O(nlogn). Here, n is the number of unique characters in the given text.
+- Compress data without any loss of information.
+- Utilize statistical coding: more frequent symbols have shorter code words.
+- Transmit information using as few bits as possible.
+- Use variable-length encoding, i.e., variable bits for encoding.
 
-Conclusion
-Although there are other algorithms for data compression, but Huffman Coding is used especially for lossless data compression and uses greedy approach for its implementation. It turns out to be a simple and efficient way to encode data into short representations without losing any piece of information.
+## Scope
+
+In the modern era, data transmission over the Internet depends heavily on time. More data takes longer to transmit. **Huffman coding** reduces the data size, which in turn significantly reduces the transmission time. This algorithm is widely used for lossless data encoding in various applications, such as:
+
+- Data compression tools like **GZIP** and **PKZIP (WinZip)**.
+- Image formats such as **JPEG** and **PNG**.
+- Compression algorithms like **DEFLATE**.
+- Embedded processor code compression techniques.
+- Advanced audio coding standards.
+
+## How It Works
+
+The Huffman coding algorithm consists of two main steps:
+
+1. **Building the Huffman Tree** from input characters.
+2. **Traversing the Huffman Tree** to assign binary codes to each character (encoding).
+
+## Decompression (Decoding)
+
+To decompress the data, the Huffman tree must be reconstructed. One approach stores the encoding map (containing characters and their frequency count) along with the encoded data, but this can result in significant overhead. Instead, a more efficient approach is used, where the tree is reconstructed using a **preorder traversal**:
+
+- Non-leaf nodes are marked with `0`.
+- Leaf nodes are marked with `1` and store the corresponding character.
+
+This method takes fewer bytes to store the Huffman tree structure, making it more efficient.
+
+## Time Complexity
+
+The time complexity of the Huffman coding algorithm is:
+
+- Extracting the minimum frequency from the priority queue (using `extractMin()`) is called `2 x (n-1)` times for `n` nodes.
+- Since `extractMin()` uses a min-heap (`minHeapify()`) with complexity `O(log n)`, the overall time complexity of Huffman coding is **O(n log n)**, where `n` is the number of unique characters in the input text.
+
+## Conclusion
+
+Though various algorithms exist for data compression, **Huffman Coding** stands out for lossless data compression. It employs a greedy approach to efficiently encode data into shorter representations, maintaining all the original information. It's simple, efficient, and widely used in real-world applications.
